@@ -131,7 +131,6 @@ def time_consuming_square(input):
     return input * input
 
 class NeedsImprovement(object):
-    # 3 (done)
     # memorization helps to run the code faster when calculating squares next time
     def find_square(self, value, value_dict):
         
