@@ -130,7 +130,7 @@ def time_consuming_square(input):
     sleep(1)  # Do not remove this
     return input * input
 
-class NeedsImprovement(object):
+class ImprovingSquaresEfficieny(object):
     # memorization helps to run the code faster when calculating squares next time
     def find_square(self, value, value_dict):
         
@@ -144,7 +144,7 @@ if __name__ == "__main__":
 
     value_dict={}
 
-    square_finder = NeedsImprovement() 
+    square_finder = ImprovingSquaresEfficieny() 
     for i in range(1000):
         value = int(10*random()) + 1
         print(square_finder.find_square(value, value_dict))
