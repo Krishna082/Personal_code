@@ -1,6 +1,6 @@
 
-###Instatiating a class object
-class A(object):
+###Instantiating a class object
+class InstanObject(object):
 
     variable = "String value"  # class variable, value common for all instances of this class
     __private_variable = "Special or 'private' variable with value common for all instances of this class"
@@ -8,44 +8,46 @@ class A(object):
     def __new__(cls):
         # cls is the current class
         print("Creating instance")
-        return super(A, cls).__new__(cls)
+        return super(InstanObject, cls).__new__(cls)
 
     def __init__(self):
         # self is the current instance
-        self.instance_variable = "some value"  # Only the current instance has this value
+        self.instance_variable = "some value"
         print("Init is called")
-
+    @staticmethod
     def normal_method(self, value):
         """
         Normal method
         :return:
         """
         self.instance_variable = value
-        some_variable = "some value"  # local variable only visible in current scope (method)
+        some_variable = "some value" 
         return some_variable
 
 
-A()
+a = InstanObject()
+print (a)
+
 
 ### Variable overridden and Object Instatiation
 
-class PatternClass1(object):
+class NewClass1(object):
 
-    __variable = None  # classes
+    __variable = None 
 
     def __new__(cls):
         if cls.__variable is None:
-            cls.__variable = super(PatternClass1, cls).__new__(cls)
+            cls.__variable = super(NewClass1, cls).__new__(cls)
         return cls.__variable
 
 
-a = PatternClass1()
+a = NewClass1()
 a.variable = 1
-b = PatternClass1()
+b = NewClass1()
 b.variable = 2
 
 
-print(a.variable)
+print(a.variable) # 2; because of overridden
 
 
 ### class Inheritance
@@ -91,7 +93,7 @@ class Circle(Shape):
         return 2.0*3.14*self.radius
 
 
-class FactoryPattern:
+class CheckingShapes:
     def creatingThreeShapes(self, shape_name):
         if shape_name == 'Rectangle':
             print("The shape created: Rectangle}")
@@ -111,8 +113,8 @@ class FactoryPattern:
 
 # this is genral code for any of the three shapes
 def CreatingInstanceShapes(name_of_the_shape):
-    factory_pattern = FactoryPattern()
-    shape = factory_pattern.creatingThreeShapes(name_of_the_shape)
+    Checking_Shapes = CheckingShapes()
+    shape = Checking_Shapes.creatingThreeShapes(name_of_the_shape)
  
     print("The area of", name_of_the_shape," is ", shape.area())
     print("The circumference of", name_of_the_shape," is ",shape.circumference())
@@ -126,11 +128,12 @@ CreatingInstanceShapes("Square")
 from time import sleep
 from random import random
 
+print("calculating squares")
 def time_consuming_square(input):
-    sleep(1)  # Do not remove this
+    sleep(1) # enforcing delay for normal computation
     return input * input
 
-class ImprovingSquaresEfficieny(object):
+class ImprovingSolution(object):
     # memorization helps to run the code faster when calculating squares next time
     def find_square(self, value, value_dict):
         
@@ -144,7 +147,7 @@ if __name__ == "__main__":
 
     value_dict={}
 
-    square_finder = ImprovingSquaresEfficieny() 
+    square_finder = ImprovingSolution() 
     for i in range(1000):
         value = int(10*random()) + 1
         print(square_finder.find_square(value, value_dict))
