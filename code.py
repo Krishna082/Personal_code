@@ -26,7 +26,6 @@ class InstanObject(object):
 
 
 a = InstanObject()
-print (a)
 
 
 ### Variable overridden and Object Instatiation
